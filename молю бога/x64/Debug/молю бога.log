@@ -1,0 +1,10 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (молю бога.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  filestream.cpp
+  ioput.cpp
+  menu.cpp
+  structs.cpp
+  utils.cpp
+  main.cpp
+  Создание кода...
+C:\Users\goasd\source\repos\молю бога\молю бога\utils.cpp(620,1): warning C4715: filtres: значение возвращается не при всех путях выполнения
+  молю бога.vcxproj -> C:\Users\goasd\source\repos\молю бога\x64\Debug\coursework.exe
