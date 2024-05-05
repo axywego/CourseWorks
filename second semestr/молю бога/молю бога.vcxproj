@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="filestream.cpp" />
+    <ClCompile Include="handling.cpp" />
     <ClCompile Include="ioput.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="structs.cpp" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="filestream.h" />
+    <ClInclude Include="handling.h" />
     <ClInclude Include="ioput.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="structs.h" />

@@ -1,7 +1,7 @@
 #include "filestream.h"
 
 void newDB() {
-    std::cout << "Напишите название для нового файла базы данных:\n>>> ";
+    std::cout << "Напишите название для нового файла базы данных:\n";
     std::string input;
     getline(std::cin, input);
     std::fstream newF(input, std::ios::out);
@@ -13,7 +13,7 @@ void newDB() {
 }
 
 void deleteDB() {
-    std::cout << "Введите название файла базы данных для удаления:\n>>> ";
+    std::cout << "Введите название файла базы данных для удаления:\n";
     std::string input;
     getline(std::cin, input);
 

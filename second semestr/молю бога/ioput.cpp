@@ -39,7 +39,7 @@ User enterNewUser(Deque* users) {
 
 inputName:
     while (true) {
-        std::cout << "Напишите свое имя:\n>>> ";
+        std::cout << "Напишите свое имя:\n";
         getline(std::cin, input);
         if (input.size() <= 20) {
             for (char el : input) {
@@ -63,7 +63,7 @@ inputName:
 
 inputSurname:
     while (true) {
-        std::cout << "Напишите свою фамилию:\n>>> ";
+        std::cout << "Напишите свою фамилию:\n";
         getline(std::cin, input);
         if (input.size() <= 20) {
             for (char el : input) {
@@ -89,7 +89,6 @@ inputSurname:
     std::cout << "Выберите тип своего аккаунта: 0 - закрытый, 1 - открытый:\n";
 
     while (true) {
-        std::cout << ">>> ";
         getline(std::cin, input);
         if (input == "0" || input == "1") {
             user.account_type = std::stoi(input);
@@ -127,9 +126,7 @@ interestsLoop:
 
     std::set<int> nums_interests;
     int count = 0;
-    std::cout << ">>> ";
     getline(std::cin, input);
-    //
     size_t i = input.size() - 1;
     while (input[i] == ' ') {
         input.pop_back();
@@ -202,7 +199,6 @@ interestsLoop:
         std::cout << "Фамилия пользователя:\n";
 
         while (true) {
-            std::cout << ">>> ";
             getline(std::cin, input);
             maybeFriends = searchUsersByAttribute(users, "surname", input);
             if (input == "0") goto end;
