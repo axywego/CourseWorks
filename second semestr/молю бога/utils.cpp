@@ -40,7 +40,12 @@ int validInput(std::string& input) {
     while (true) {
         getline(std::cin, input);
         if (isNum(input)) {
-            return stoi(input);
+            try {
+                return stoi(input);
+            }
+            catch (std::invalid_argument) {
+                std::cout << "Неверно введено значение!\n";
+            }
         }
         else {
             std::cout << "Неверно введено значение!\n";
@@ -70,6 +75,8 @@ void menuMessage(std::string items[], int indexes[], int size) {
         if (cycle == indexes[index]) {
             index++;
             size_t offset = 50 / 2 - msgSize / 2;
+            if(cycle != 0)
+                std::cout << "|" << std::string(50, ' ') << "|\n";
             std::cout << "|" << std::string(offset, ' ') << str << std::string((msgSize % 2 == 0 ? offset : offset - 1), ' ') << "|\n";
 
         }

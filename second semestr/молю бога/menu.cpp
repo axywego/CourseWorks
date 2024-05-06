@@ -5,9 +5,9 @@ void menu() {
     welcomeMessage();
     std::string read = "-1";
     std::string items[]{ "РАБОТА С ДАННЫМИ", "Ввод данных", "Редактирование данных", "Удаление данных", "Вывод данных",
-                         "РАБОТА С ФАЙЛАМИ", "Создание нового файла", "Удаление файла", "Сохранение данных в файл", "Загрузка данных из файла",
+                         "РАБОТА С ФАЙЛАМИ", "Сохранение данных в файл", "Загрузка данных из файла",
                          "ОСТАЛЬНОЕ", "Сортировка", "Фильтрация", "Выйти" };
-    int indexes[]{ 0, 5, 10 };
+    int indexes[]{ 0, 5, 8 };
     std::string trigger = std::to_string(sizeof(items) / sizeof(items[0]) - sizeof(indexes) / sizeof(indexes[0]));
     while (read != trigger) {
 
@@ -45,14 +45,10 @@ void menu() {
             }
             break;
         case 5:
-            newDB(); break;
-        case 6:
-            deleteDB(); break;
-        case 7:
             saveDataBase(users); break;
-        case 8:
+        case 6:
             users = loadDataBase(false); break;
-        case 9:
+        case 7:
             if (users->size == 0) {
                 std::cout << "Нет ни одного пользователя!\n\n";
             }
@@ -60,7 +56,7 @@ void menu() {
                 sorting(users);
             }
             break;
-        case 10:
+        case 8:
             if (users->size == 0) {
                 std::cout << "Нет ни одного пользователя!\n\n";
             }
@@ -72,7 +68,7 @@ void menu() {
                 clearDeque(newD);
             }
             break;
-        case 11:
+        case 9:
             break;
         default:
             std::cout << "Неверный выбор!\n";

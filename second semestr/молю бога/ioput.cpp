@@ -37,11 +37,14 @@ User enterNewUser(Deque* users) {
     user.id = id;
     std::string input = "";
 
-inputName:
+    enterName:
     while (true) {
         std::cout << "Напишите свое имя:\n";
         getline(std::cin, input);
-        if (input.size() <= 20) {
+        if (input.size() == 0) {
+            std::cout << "Имя не может быть пустым!\n";
+        }
+        else if (input.size() <= 20) {
             for (char el : input) {
                 if (el >= 'A' && el <= 'Z' || el >= 'a' && el <= 'z' ||
                     el >= 'А' && el <= 'Я' || el >= 'а' && el <= 'я' ||
@@ -50,7 +53,7 @@ inputName:
                 }
                 else {
                     std::cout << "Имя не может содержать цифры, пробелы и спец. символы!\n";
-                    goto inputName;
+                    goto enterName;
                 }
             }
             break;
@@ -61,11 +64,14 @@ inputName:
     }
     strcpy_s(user.name, input.c_str());
 
-inputSurname:
+    enterSurname:
     while (true) {
         std::cout << "Напишите свою фамилию:\n";
         getline(std::cin, input);
-        if (input.size() <= 20) {
+        if (input.size() == 0) {
+            std::cout << "Фамилия не может быть пустой!\n";
+        }
+        else if (input.size() <= 20) {
             for (char el : input) {
                 if (el >= 'A' && el <= 'Z' || el >= 'a' && el <= 'z' ||
                     el >= 'А' && el <= 'Я' || el >= 'а' && el <= 'я' ||
@@ -74,7 +80,7 @@ inputSurname:
                 }
                 else {
                     std::cout << "Имя не может содержать цифры, пробелы и спец. символы!\n";
-                    goto inputSurname;
+                    goto enterSurname;
                 }
             }
             break;
@@ -127,6 +133,10 @@ interestsLoop:
     std::set<int> nums_interests;
     int count = 0;
     getline(std::cin, input);
+    if (input.size() == 0) {
+        std::cout << "Неверный ввод!\n";
+        goto interestsLoop;
+    }
     size_t i = input.size() - 1;
     while (input[i] == ' ') {
         input.pop_back();
@@ -152,7 +162,14 @@ interestsLoop:
             goto interestsLoop;
         }
         else if (std::isspace(el)) {
-            int number = stoi(choice);
+            int number;
+            try {
+                number = stoi(choice);
+            }
+            catch (std::invalid_argument) {
+                std::cout << "Недействительный ввод!\n";
+                goto interestsLoop;
+            }
             if (number <= size && number > 0) {
                 count++;
                 nums_interests.insert(number);

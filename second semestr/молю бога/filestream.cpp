@@ -1,30 +1,5 @@
 #include "filestream.h"
 
-void newDB() {
-    std::cout << "Напишите название для нового файла базы данных:\n";
-    std::string input;
-    getline(std::cin, input);
-    std::fstream newF(input, std::ios::out);
-    if (newF.is_open()) {
-        std::cout << "Файл успешно создан!\n";
-        return;
-    }
-    std::cout << "Не удалось создать файл!\n";
-}
-
-void deleteDB() {
-    std::cout << "Введите название файла базы данных для удаления:\n";
-    std::string input;
-    getline(std::cin, input);
-
-    if (std::remove(input.c_str()) != 0)
-    {
-        std::cout << "Не удалось удалить файл\n";
-        return;
-    }
-    std::cout << "Файл успешно удален!\n\n";
-}
-
 void saveDataBase(Deque* users) {
     std::ofstream fileWrite("users.txt");
     if (fileWrite.is_open()) {

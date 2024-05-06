@@ -96,11 +96,14 @@ void editUsers(Deque* users) {
                 choice = validInput(input);
                 switch (choice) {
                 case 1:
-                editSurname:
+                    enterEditSurname:
                     while (true) {
                         std::cout << "Введите новую фамилию:\n";
                         getline(std::cin, input);
-                        if (input.size() <= 20) {
+                        if (input.size() == 0) {
+                            std::cout << "Фамилия не может быть пустой\n";
+                        }
+                        else if (input.size() <= 20) {
                             for (char el : input) {
                                 if (el >= 'A' && el <= 'Z' || el >= 'a' && el <= 'z' ||
                                     el >= 'А' && el <= 'Я' || el >= 'а' && el <= 'я' ||
@@ -109,7 +112,7 @@ void editUsers(Deque* users) {
                                 }
                                 else {
                                     std::cout << "Фамилия не может содержать цифры, пробелы и спец. символы!!\n";
-                                    goto editSurname;
+                                    goto enterEditSurname;
                                 }
                             }
                             break;
@@ -122,10 +125,14 @@ void editUsers(Deque* users) {
                     strcpy(user.surname, input.c_str());
                     break;
                 case 2:
+                    enterEditName:
                     while (true) {
                         std::cout << "Введите новое имя:\n";
                         getline(std::cin, input);
-                        if (input.size() <= 20) {
+                        if (input.size() == 0) {
+                            std::cout << "Имя не может быть пустым!\n";
+                        }
+                        else if (input.size() <= 20) {
                             for (char el : input) {
                                 if (el >= 'A' && el <= 'Z' || el >= 'a' && el <= 'z' ||
                                     el >= 'А' && el <= 'Я' || el >= 'а' && el <= 'я' ||
@@ -134,7 +141,7 @@ void editUsers(Deque* users) {
                                 }
                                 else {
                                     std::cout << "Имя не может содержать цифры, пробелы и спец. символы!!\n";
-                                    goto editSurname;
+                                    goto enterEditName;
                                 }
                             }
                             break;
@@ -185,6 +192,10 @@ void editUsers(Deque* users) {
 
                 interestsEditLoop:
                     getline(std::cin, input);
+                    if (input.size() == 0) {
+                        std::cout << "Неверный ввод!\n";
+                        goto interestsEditLoop;
+                    }
                     i = input.size() - 1;
                     while (input[i] == ' ') {
                         input.pop_back();
@@ -206,7 +217,14 @@ void editUsers(Deque* users) {
                             goto interestsEditLoop;
                         }
                         else if (std::isspace(el)) {
-                            int number = stoi(choiceInterest);
+                            int number;
+                            try {
+                                number = stoi(choiceInterest);
+                            }
+                            catch (std::invalid_argument) {
+                                std::cout << "Недействительный ввод!\n";
+                                goto interestsEditLoop;
+                            }
                             if (number <= size && number > 0) {
                                 count++;
                                 nums_interests.insert(number);
